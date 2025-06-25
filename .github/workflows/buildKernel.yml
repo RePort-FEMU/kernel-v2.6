@@ -148,8 +148,6 @@ jobs:
               files: |
                 ./artifacts/mips/kernel-mipsel.tar.gz
                 ./artifacts/mips/kernel-mipseb.tar.gz
-                ./artifacts/armel/kernel-armel-zImage.tar.gz
-                ./artifacts/armel/kernel-armel-vmlinux.tar.gz
             env:
               GITHUB_TOKEN: ${{ secrets.KERNEL_BUILD_TOKEN }}
               GITHUB_REPOSITORY: ${{ github.repository }}
