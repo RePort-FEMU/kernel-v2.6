@@ -258,13 +258,13 @@ static int bind_ret_hook(struct kretprobe_instance *ri, struct pt_regs *regs) {
 
 			sock = sockfd_lookup(fd_cache, NULL);
 			if (!sock) {
-				printk(KERN_INFO MODULE_NAME": sys_bind_ret[PID: %d (%s)] = %ld [Port Not Captured]\n", task_pid_nr(current), current->comm, retval);
+				printk(KERN_INFO MODULE_NAME": sys_bind_ret[PID: %d (%s)] = %ld [Assigned Port: 0]\n", task_pid_nr(current), current->comm, retval);
 				return 0;
 			}
 
 			sk = sock->sk;
 			if (!sk) {
-				printk(KERN_INFO MODULE_NAME": sys_bind_ret[PID: %d (%s)] = %ld [Port Not Captured]\n", task_pid_nr(current), current->comm, retval);
+				printk(KERN_INFO MODULE_NAME": sys_bind_ret[PID: %d (%s)] = %ld [Assigned Port: 0]\n", task_pid_nr(current), current->comm, retval);
 				sockfd_put(sock);
 				return 0;
 			}
@@ -277,7 +277,7 @@ static int bind_ret_hook(struct kretprobe_instance *ri, struct pt_regs *regs) {
 			sockfd_put(sock);
 			return 0;
 		}
-		printk(KERN_INFO MODULE_NAME": sys_bind_ret[PID: %d (%s)] = %ld [Port Not Captured]\n", task_pid_nr(current), current->comm, retval);
+		printk(KERN_INFO MODULE_NAME": sys_bind_ret[PID: %d (%s)] = %ld [Assigned Port: 0]\n", task_pid_nr(current), current->comm, retval);
 	}
 	return 0;
 }
